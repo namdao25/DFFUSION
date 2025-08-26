@@ -1,9 +1,12 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function App() {
+function Home() {
+  const navigate = useNavigate();
+
   const handleModelLogin = () => {
-    alert('Model login clicked!');
+    navigate('/model-login');
   };
 
   const handleClientLogin = () => {
@@ -25,6 +28,38 @@ function App() {
         </button>
       </main>
     </div>
+  );
+}
+
+function ModelLogin() {
+  return (
+    <div className="login-page">
+      <h2>Model Login</h2>
+      <form className="login-form">
+        <label>
+          Email:
+          <input type="email" placeholder="Enter your email" required />
+        </label>
+        <label>
+          Password:
+          <input type="password" placeholder="Enter your password" required />
+        </label>
+        <button type="submit" className="button">
+          Login
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/model-login" element={<ModelLogin />} />
+      </Routes>
+    </Router>
   );
 }
 
