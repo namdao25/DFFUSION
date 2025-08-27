@@ -10,7 +10,7 @@ function Home() {
   };
 
   const handleClientLogin = () => {
-    alert('Client login clicked!');
+    navigate('/client-login');
   };
 
   return (
@@ -52,12 +52,34 @@ function ModelLogin() {
   );
 }
 
+function ClientLogin() {
+  return (
+    <div className="login-page">
+      <h2>Client Login</h2>
+      <form className="login-form">
+        <label>
+          Email:
+          <input type="email" placeholder="Enter your email" required />
+        </label>
+        <label>
+          Password:
+          <input type="password" placeholder="Enter your password" required />
+        </label>
+        <button type="submit" className="button">
+          Login
+        </button>
+      </form>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/model-login" element={<ModelLogin />} />
+        <Route path="/client-login" element={<ClientLogin />} />
       </Routes>
     </Router>
   );
